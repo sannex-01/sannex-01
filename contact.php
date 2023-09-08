@@ -1,3 +1,10 @@
+<?php
+$subject = NULL;
+
+if (isset($_GET['service'])) {
+    $subject = 'Enquiry for '. $_GET['service'];
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -26,7 +33,26 @@
 
         <!-- Navbar & Hero Start -->
         <div class="container-xxl position-relative p-0">
-            <?php include('views/_navbar.php')?>
+            <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
+                <a href="" class="navbar-brand p-0">
+                    <!-- <h1 class="m-0"><i class="fa fa-search me-2"></i>SEO<span class="fs-5">Master</span></h1> -->
+                    <img src="assets/img/logo.png" alt="Logo">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                    <span class="fa fa-bars"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <div id="navbar" class="navbar-nav ms-auto py-0">
+                        <a href="/#home" class="nav-item nav-link active">Home</a>
+                        <a href="/#about" class="nav-item nav-link">About</a>
+                        <a href="/#service" class="nav-item nav-link">Service</a>
+                        <a href="/#project" class="nav-item nav-link">Project</a>
+                    </div>
+                    <!-- <butaton type="button" class="btn text-secondary ms-3" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="fa fa-search"></i></butaton> -->
+                    <a href="contact.php" class="btn btn-secondary text-light rounded-pill py-2 px-4 ms-3">Contact
+                        Us</a>
+                </div>
+            </nav>
 
             <div class="container-xxl py-2 bg-primary hero-header mb-5">
                 <div class="container my-5 py-5 px-lg-5">
@@ -36,8 +62,8 @@
                             <hr class="bg-white mx-auto mt-0" style="width: 90px;">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb justify-content-center">
-                                    <li class="breadcrumb-item"><a class="text-white" href="#">Home</a></li>
-                                    <li class="breadcrumb-item"><a class="text-white" href="#">Pages</a></li>
+                                    <li class="breadcrumb-item"><a class="text-white" href="/">Home</a></li> 
+                                    <li class="breadcrumb-item"><i class="fas fa-caret-right pl-2 text-white"></i></li> 
                                     <li class="breadcrumb-item text-white active" aria-current="page">Contact</li>
                                 </ol>
                             </nav>
@@ -49,23 +75,28 @@
         <!-- Navbar & Hero End -->
 
 
-        <!-- Full Screen Search Start -->
-        <div class="modal fade" id="searchModal" tabindex="-1">
+        <!-- Full Screen Alert Start -->
+        <div class="modal fade" id="textModal" tabindex="-1">
             <div class="modal-dialog modal-fullscreen">
                 <div class="modal-content" style="background: rgba(29, 29, 39, 0.7);">
                     <div class="modal-header border-0">
-                        <button type="button" class="btn bg-white btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <button type="button" class="btn bg-white btn-close" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
                     </div>
                     <div class="modal-body d-flex align-items-center justify-content-center">
-                        <div class="input-group" style="max-width: 600px;">
-                            <input type="text" class="form-control bg-transparent border-light p-3" placeholder="Type search keyword">
-                            <button class="btn btn-light px-4"><i class="bi bi-search"></i></button>
+                        <div class="service-item d-flex flex-column justify-content-center text-center rounded" style="max-width: 600px;">
+                            <div class="service-icon flex-shrink-0">
+                                <i class="fas fa-check fa-2x"></i>
+                            </div>
+                            <h5 class="mb-3">Contact Info Sent!</h5>
+                            <p>Your message has been sent successfully. We will get back to you shortly.</p>
+                            <button class="btn btn-light px-3 mt-auto mx-auto rounded-pill" data-bs-dismiss="modal" aria-label="Close">Close</button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- Full Screen Search End -->
+        <!-- Full Screen Alert End -->
 
 
         <!-- Contact Start -->
@@ -75,26 +106,26 @@
                     <div class="col-lg-7">
                         <div class="section-title position-relative text-center mb-5 pb-2 wow fadeInUp" data-wow-delay="0.1s">
                             <h6 class="position-relative d-inline text-primary ps-4">Contact Us</h6>
-                            <h2 class="mt-2">Contact For Any Query</h2>
+                            <h2 class="mt-2">Get in Touch with Us</h2>
                         </div>
                         <div class="wow fadeInUp" data-wow-delay="0.3s">
-                            <form>
+                            <form id="contactForm">
                                 <div class="row g-3">
                                     <div class="col-md-6">
                                         <div class="form-floating">
-                                            <input type="text" class="form-control" id="name" placeholder="Your Name">
+                                            <input type="text" class="form-control" id="name" placeholder="Your Name" required>
                                             <label for="name">Your Name</label>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-floating">
-                                            <input type="email" class="form-control" id="email" placeholder="Your Email">
+                                            <input type="email" class="form-control" id="email" placeholder="Your Email" required>
                                             <label for="email">Your Email</label>
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="form-floating">
-                                            <input type="text" class="form-control" id="subject" placeholder="Subject">
+                                            <input type="text" class="form-control" id="subject" placeholder="Subject" required value="<?php echo $subject?>">
                                             <label for="subject">Subject</label>
                                         </div>
                                     </div>
@@ -164,24 +195,15 @@
                         $.ajax({
                             url: 'model/contact.php',
                             type: 'POST',
-                            data: { name: name, email: email, subject: subject, message: message },
+                            data: { name: name, email: email, subject: subject, message: message  },
                             success: function (data) {
-                                $('#errorAlert').html(data.message);
-    
-                                if (data.status == 'success') {
-                                    $('#errorAlert').removeClass('alert-info');
-                                    $('#errorAlert').removeClass('alert-danger');
-                                    $('#errorAlert').addClass('alert-success');
-                                } else {
-                                    $('#errorAlert').removeClass('alert-success');
-                                    $('#errorAlert').removeClass('alert-info');
-                                    $('#errorAlert').addClass('alert-danger');
-                                }
-                                $('#errorAlert').fadeIn();
+                                $("#textModal").modal('show');
     
                                 // AJAX call successful, stop the spinner and update button text
                                 button.html(originalText);
                                 button.prop("disabled", false);
+
+                                $("#contactForm")[0].reset();
                             }
                         });
                     }, 2000); // Simulated AJAX delay of 2 seconds

@@ -55,8 +55,8 @@
         <!-- Navbar & Hero End -->
 
 
-        <!-- Full Screen Search Start -->
-        <div class="modal fade" id="searchModal" tabindex="-1">
+        <!-- Full Screen Alert Start -->
+        <div class="modal fade" id="textModal" tabindex="-1">
             <div class="modal-dialog modal-fullscreen">
                 <div class="modal-content" style="background: rgba(29, 29, 39, 0.7);">
                     <div class="modal-header border-0">
@@ -64,16 +64,20 @@
                             aria-label="Close"></button>
                     </div>
                     <div class="modal-body d-flex align-items-center justify-content-center">
-                        <div class="input-group" style="max-width: 600px;">
-                            <input type="text" class="form-control bg-transparent border-light p-3"
-                                placeholder="Type search keyword">
-                            <button class="btn btn-light px-4"><i class="bi bi-search"></i></button>
+                        <div id="alertBox" class="service-item d-flex flex-column justify-content-center text-center rounded" style="max-width: 600px;">
+                            <div class="service-icon flex-shrink-">
+                                <i class="fas fa-envelope fa-2x alertIcon_"></i>
+                                <i class="fas fa-window-close fa-2x d-none alertIcon"></i>
+                            </div>
+                            <h5 class="mb-3 alertTitle">Quote Request Sent!</h5>
+                            <p id="textModal_">Your quote request has been sent successfully. We'll get back to you shortly via email. If you don't receive our email in your inbox, please check your spam folder.</p>
+                            <button class="btn btn-light px-3 mt-auto mx-auto rounded-pill" data-bs-dismiss="modal" aria-label="Close">Close</button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- Full Screen Search End -->
+        <!-- Full Screen Alert End -->
 
 
         <!-- About Start -->
@@ -133,7 +137,7 @@
                                 <div class="col-md-5 position-relative mt-3">
                                     <select class="form-control border-0 rounded-pill w-100 ps-4 pe-5 bg-white"
                                         id="serviceSelect" style="height: 48px;">
-                                        <option value="All Services">All Services</option>
+                                        <option value="Web Services">All Services</option>
                                         <option value="Website Design" selected>Website Design</option>
                                         <option value="SEO Services">SEO Services</option>
                                         <option value="ML Model Development">ML Model Development</option>
@@ -142,8 +146,7 @@
                                         <option value="Content Management">Content Management</option>
                                     </select>
                                     <button type="button"
-                                        class="btn shadow-none position-absolute top-0 end-0 mt-1 me-3"
-                                        onclick="triggerselect()">
+                                        class="btn shadow-none position-absolute top-0 end-0 mt-1 me-3">
                                         <i class="fa fa-caret-down text-primary fs-4"></i>
                                     </button>
                                 </div>
@@ -483,50 +486,65 @@
                 var button = $(this);
                 var serviceSelect = $('#serviceSelect').val();
                 var email = $('#email').val();
+                var get_quote = 1;
 
                 if (email == '') {
-                    $('#email').focus()
+                    $('#email').focus();
                 } else {
                     var originalText = button.html();
-    
+
                     // Disable the button to prevent multiple clicks while the spinner is active
                     button.removeClass('mt-1');
                     button.prop("disabled", true);
-    
+
                     // Change the button text to the spinner
                     button.html('<span class="spinner-border spinner-border-primary mt-0 p-0" role="status" aria-hidden="true"></span>');
-    
-                    // Simulate an AJAX call using setTimeout
-                    setTimeout(function () {
-                        // Simulate the AJAX call completion
-                        $.ajax({
-                            url: 'model/contact.php',
-                            type: 'POST',
-                            data: { service: serviceSelect, email: email },
-                            success: function (data) {
-                                $('#errorAlert').html(data.message);
-    
-                                if (data.status == 'success') {
-                                    $('#errorAlert').removeClass('alert-info');
-                                    $('#errorAlert').removeClass('alert-danger');
-                                    $('#errorAlert').addClass('alert-success');
-                                } else {
-                                    $('#errorAlert').removeClass('alert-success');
-                                    $('#errorAlert').removeClass('alert-info');
-                                    $('#errorAlert').addClass('alert-danger');
-                                }
-                                $('#errorAlert').fadeIn();
-    
-                                // AJAX call successful, stop the spinner and update button text
-                                button.addClass('mt-1');
-                                button.html(originalText);
-                                button.prop("disabled", false);
+
+                    // Make the AJAX call
+                    $.ajax({
+                        url: 'model/contact.php',
+                        type: 'POST',
+                        data: { service: serviceSelect, email: email, get_quote: get_quote },
+                        success: function (data) {
+                            // Handle success
+                            $("#textModal").modal('show');
+                            $('#textModal_').html(data.message);
+                            $('.alertTitle').html(data.title);
+
+                            if (data.status == 'failed') {
+                                $('.alertIcon_').hide();
+                                $('.alertIcon').removeClass('d-none');
+                                $('#alertBox').addClass('bg-danger');
+                                $('#textModal_').addClass('text-white');
+                            } else {
+                                $('.alertIcon_').show();
+                                $('.alertIcon').addClass('d-none');
+                                $('#alertBox').removeClass('bg-danger');
+                                $('#textModal_').removeClass('text-white');
                             }
-                        });
-                    }, 2000); // Simulated AJAX delay of 2 seconds
+                        },
+                        error: function (data) {
+                            // Handle success
+                            $("#textModal").modal('show');
+                            $('#textModal_').html(data.message);
+                            $('.alertTitle').html(data.title);
+
+                            $('.alertIcon_').show();
+                            $('.alertIcon').addClass('d-none');
+                            $('#alertBox').removeClass('bg-danger');
+                            $('#textModal_').removeClass('text-white');
+                        },
+                        complete: function () {
+                            // Regardless of success or error, stop the spinner and update button text
+                            button.addClass('mt-1');
+                            button.html(originalText);
+                            button.prop("disabled", false);
+                        }
+                    });
                 }
             });
         });
+
     </script>
 </body>
 
