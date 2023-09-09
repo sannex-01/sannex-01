@@ -8,7 +8,6 @@
     <meta
         content="sannex, web, web design, web services, web development, programming, graphics, home, homepage, graphic design, designer, seo, google analytics"
         name="keywords">
-    <meta content="" name="description">
 
     <?php include('views/_head.php')?>
 </head>
