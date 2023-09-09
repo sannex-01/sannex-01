@@ -4,7 +4,7 @@
 <!-- Add Open Graph Protocol (OGP) meta tags for social media sharing -->
 <meta property="og:title" content="Sannex: Your Growth, Our Mission">
 <meta property="og:description" content="Explore Sannex: Trailblazing web service business in Nigeria. Elevate your brand with our online expertise. Embrace innovation with us!">
-<meta property="og:image" content="https://sannex.ng/asssets/img/sannex_page.png">
+<meta property="og:image" content="https://sannex.ng/assets/img/sannex_page.png">
 <meta property="og:url" content="https://sannex.ng/">
 <!-- <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@yourtwitterhandle"> -->
