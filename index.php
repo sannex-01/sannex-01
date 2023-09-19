@@ -1,3 +1,71 @@
+<?php
+// Define a multidimensional associative array with 6 keys, each having its own associated array
+$myArray = array(
+    'portfolio-1' => array(
+        'name' => 'E-voting Web App',
+        'category' => 'Web Design',
+        'link' => 'e-voting1.sannex.ng/',
+        'tags' => 'edtech',
+    ),
+    'portfolio-2' => array(
+        'name' => 'Fash Shot It',
+        'category' => 'Portfolio Design',
+        'link' => 'portfolio.sannex.ng/fashshotit/',
+        'tags' => 'portfolio business',
+    ),
+    'portfolio-3' => array(
+        'name' => 'Starto Heights',
+        'category' => 'Crypto Investment Website',
+        'link' => 'stratoheight.com',
+        'tags' => 'portfolio business',
+    ),
+    'portfolio-4' => array(
+        'name' => 'TBB E-commerce',
+        'category' => 'E-Commerce Development',
+        'link' => 'tbb-ecommerce.sannex.ng/',
+        'tags' => 'business ecommerce',
+    ),
+    'portfolio-5' => array(
+        'name' => 'Copy Doc',
+        'category' => 'Web Design',
+        'link' => 'bit.ly/freecopydoc',
+        'tags' => 'opensource',
+    ),
+    'portfolio-6' => array(
+        'name' => 'Shine Business',
+        'category' => 'Web Design',
+        'link' => 'shinebusiness.org/',
+        'tags' => 'portfolio business',
+    ),
+    'portfolio-7' => array(
+        'name' => 'Altwires',
+        'category' => 'Attendance Management System',
+        'link' => 'bit.ly/altwires_staging',
+        'tags' => 'business faithtech',
+    ),
+    'portfolio-8' => array(
+        'name' => 'Samakins Portfolio',
+        'category' => 'Portfolio Design',
+        'link' => 'bit.ly/samakins-portfolio',
+        'tags' => 'portfolio',
+    ),
+    'portfolio-9' => array(
+        'name' => 'Breast Cancer ML Model',
+        'category' => 'Machine Learning Web App',
+        'link' => 'breast-cancer-pred-qdlv.onrender.com/',
+        'tags' => 'opensource mlmodel',
+    ),
+);
+
+// Shuffle the keys randomly
+$keys = array_keys($myArray);
+shuffle($keys);
+
+// Select the first 6 shuffled keys
+$randomKeys = array_slice($keys, 0, 6);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -262,86 +330,34 @@
                     <div class="col-12 text-center">
                         <ul class="list-inline mb-5" id="portfolio-flters">
                             <li class="btn px-3 pe-4 active" data-filter="*">All</li>
-                            <li class="btn px-3 pe-4" data-filter=".first">Web Design</li>
-                            <li class="btn px-3 pe-4" data-filter=".second">SEO</li>
-                            <li class="btn px-3 pe-4" data-filter=".third">ML Model Developmet</li>
+                            <li class="btn px-3 pe-4" data-filter=".portfolio">Portfolio</li>
+                            <li class="btn px-3 pe-4" data-filter=".business">Business</li>
+                            <li class="btn px-3 pe-4" data-filter=".opensource">Open Source</li>
+                            <li class="btn px-3 pe-4" data-filter=".ecommerce">E-commerce</li>
+                            <li class="btn px-3 pe-4" data-filter=".edtech">Ed-Tech</li>
+                            <li class="btn px-3 pe-4" data-filter=".mlmodel">ML Model</li>
+                            <li class="btn px-3 pe-4" data-filter=".faithtech">Faith-Tech</li>
                         </ul>
                     </div>
                 </div>
                 <div class="row g-4 portfolio-container">
-                    <!-- <div class="col-lg-4 col-md-6 portfolio-item first second wow zoomIn" data-wow-delay="0.1s">
+                    <?php
+                    // Iterate through and display the data for the randomly selected keys
+                    foreach ($randomKeys as $key) {
+                    ?>
+                    <div class="col-lg-4 col-md-6 portfolio-item <?php echo $myArray[$key]['tags'] ?> wow zoomIn" data-wow-delay="0.1s">
                         <div class="position-relative rounded overflow-hidden">
-                            <img class="img-fluid w-100" src="assets/img/portfolio-1.jpg" alt="">
+                            <img class="img-fluid w-100" src="assets/img/portfolios/<?php echo $key?>.png" alt="">
                             <div class="portfolio-overlay">
-                                <a class="btn btn-light" href="assets/img/portfolio-1.jpg" data-lightbox="portfolio"><i class="fa fa-expand fa-2x text-primary"></i></a>
+                                <a class="btn btn-light" href="assets/img/portfolios/<?php echo $key ?>.png" data-lightbox="portfolio"><i class="fa fa-expand fa-2x text-primary"></i></a>
                                 <div class="mt-auto">
-                                    <small class="text-white"><i class="fa fa-folder me-2"></i>Web Design</small>
-                                    <a class="h5 d-block text-white mt-1 mb-0" href="">Project Name</a>
+                                    <small class="text-white"><i class="fa fa-folder me-2"></i><?php echo $myArray[$key]['category'] ?></small>
+                                    <a class="h5 d-block text-white mt-1 mb-0" target="_blank" href="https://<?php echo $myArray[$key]['link'] ?>"><?php echo $myArray[$key]['name'] ?></a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-md-6 portfolio-item second wow zoomIn" data-wow-delay="0.3s">
-                        <div class="position-relative rounded overflow-hidden">
-                            <img class="img-fluid w-100" src="assets/img/portfolio-2.jpg" alt="">
-                            <div class="portfolio-overlay">
-                                <a class="btn btn-light" href="assets/img/portfolio-2.jpg" data-lightbox="portfolio"><i class="fa fa-expand fa-2x text-primary"></i></a>
-                                <div class="mt-auto">
-                                    <small class="text-white"><i class="fa fa-folder me-2"></i>Web Design</small>
-                                    <a class="h5 d-block text-white mt-1 mb-0" href="">Project Name</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 portfolio-item first wow zoomIn" data-wow-delay="0.6s">
-                        <div class="position-relative rounded overflow-hidden">
-                            <img class="img-fluid w-100" src="assets/img/portfolio-3.jpg" alt="">
-                            <div class="portfolio-overlay">
-                                <a class="btn btn-light" href="assets/img/portfolio-3.jpg" data-lightbox="portfolio"><i class="fa fa-expand fa-2x text-primary"></i></a>
-                                <div class="mt-auto">
-                                    <small class="text-white"><i class="fa fa-folder me-2"></i>Web Design</small>
-                                    <a class="h5 d-block text-white mt-1 mb-0" href="">Project Name</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 portfolio-item second wow zoomIn" data-wow-delay="0.1s">
-                        <div class="position-relative rounded overflow-hidden">
-                            <img class="img-fluid w-100" src="assets/img/portfolio-4.jpg" alt="">
-                            <div class="portfolio-overlay">
-                                <a class="btn btn-light" href="assets/img/portfolio-4.jpg" data-lightbox="portfolio"><i class="fa fa-expand fa-2x text-primary"></i></a>
-                                <div class="mt-auto">
-                                    <small class="text-white"><i class="fa fa-folder me-2"></i>Web Design</small>
-                                    <a class="h5 d-block text-white mt-1 mb-0" href="">Project Name</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 portfolio-item first wow zoomIn" data-wow-delay="0.3s">
-                        <div class="position-relative rounded overflow-hidden">
-                            <img class="img-fluid w-100" src="assets/img/portfolio-5.jpg" alt="">
-                            <div class="portfolio-overlay">
-                                <a class="btn btn-light" href="assets/img/portfolio-5.jpg" data-lightbox="portfolio"><i class="fa fa-expand fa-2x text-primary"></i></a>
-                                <div class="mt-auto">
-                                    <small class="text-white"><i class="fa fa-folder me-2"></i>Web Design</small>
-                                    <a class="h5 d-block text-white mt-1 mb-0" href="">Project Name</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 portfolio-item second wow zoomIn" data-wow-delay="0.6s">
-                        <div class="position-relative rounded overflow-hidden">
-                            <img class="img-fluid w-100" src="assets/img/portfolio-6.jpg" alt="">
-                            <div class="portfolio-overlay">
-                                <a class="btn btn-light" href="assets/img/portfolio-6.jpg" data-lightbox="portfolio"><i class="fa fa-expand fa-2x text-primary"></i></a>
-                                <div class="mt-auto">
-                                    <small class="text-white"><i class="fa fa-folder me-2"></i>Web Design</small>
-                                    <a class="h5 d-block text-white mt-1 mb-0" href="">Project Name</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div> -->
-                    <h3 class="text-center text-primary">Will Be Updated Very Soon!</h3>
+                    <?php } ?>
                 </div>
             </div>
         </div>

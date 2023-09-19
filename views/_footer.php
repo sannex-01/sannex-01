@@ -32,22 +32,22 @@
                 <h5 class="text-white mb-4">Project Gallery</h5>
                 <div class="row g-2">
                     <div class="col-4">
-                        <img class="img-fluid" src="assets/img/portfolio-1.jpg" alt="Image">
+                        <img class="img-fluid" src="assets/img/portfolios/portfolio-1.png" alt="Image">
                     </div>
                     <div class="col-4">
-                        <img class="img-fluid" src="assets/img/portfolio-2.jpg" alt="Image">
+                        <img class="img-fluid" src="assets/img/portfolios/portfolio-2.png" alt="Image">
                     </div>
                     <div class="col-4">
-                        <img class="img-fluid" src="assets/img/portfolio-3.jpg" alt="Image">
+                        <img class="img-fluid" src="assets/img/portfolios/portfolio-3.png" alt="Image">
                     </div>
                     <div class="col-4">
-                        <img class="img-fluid" src="assets/img/portfolio-4.jpg" alt="Image">
+                        <img class="img-fluid" src="assets/img/portfolios/portfolio-4.png" alt="Image">
                     </div>
                     <div class="col-4">
-                        <img class="img-fluid" src="assets/img/portfolio-5.jpg" alt="Image">
+                        <img class="img-fluid" src="assets/img/portfolios/portfolio-5.png" alt="Image">
                     </div>
                     <div class="col-4">
-                        <img class="img-fluid" src="assets/img/portfolio-6.jpg" alt="Image">
+                        <img class="img-fluid" src="assets/img/portfolios/portfolio-6.png" alt="Image">
                     </div>
                 </div>
             </div>
