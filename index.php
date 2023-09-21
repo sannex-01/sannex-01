@@ -370,30 +370,28 @@ $randomKeys = array_slice($keys, 0, 6);
                 <div class="owl-carousel testimonial-carousel">
                     <div class="testimonial-item bg-transparent border rounded text-white p-4">
                         <i class="fa fa-quote-left fa-2x mb-3"></i>
-                        <p>Sannex is highly skilled in his field, and I greatly appreciate his approach
+                        <p>Sam @sannex is highly skilled in his field, and I greatly appreciate his approach
                             to client interactions. His punctuality and ability to deliver results on time are commendable.
                         </p>
                         <div class="d-flex align-items-center">
-                            <img class="img-fluid flex-shrink-0 rounded-circle" src="assets/img/testimonial-1.jpg" style="width: 50px; height: 50px;">
+                            <img class="img-fluid flex-shrink-0 rounded-circle" src="assets/img/testimonial/testimonial-1.jpg" style="width: 50px; height: 50px;">
                             <div class="ps-3">
                                 <h6 class="text-white mb-1">Festus Fasina</h6>
                                 <small>Photographer & Cinematographer</small>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="owl-carousel testimonial-carousel">
                     <div class="testimonial-item bg-transparent border rounded text-white p-4">
                         <i class="fa fa-quote-left fa-2x mb-3"></i>
                         <p>Sannex, you provided exceptional service, displaying professionalism,
                             expertise, and dedication. You tailored your service to my specific needs,
-                            delivering an outstanding results on my application project.
+                            delivering an outstanding results.
                         </p>
                         <div class="d-flex align-items-center">
                             <img class="img-fluid flex-shrink-0 rounded-circle" src="assets/img/testimonial/testimonial-2.jpg" style="width: 50px; height: 50px;">
                             <div class="ps-3">
                                 <h6 class="text-white mb-1">Victor Alede</h6>
-                                <small>Student</small>
+                                <small>Educational Technologist</small>
                             </div>
                         </div>
                     </div>
