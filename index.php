@@ -427,7 +427,7 @@ $randomKeys = array_slice($keys, 0, 6);
                                         href="https://github.com/samakins672" target="_blank"><i
                                             class="fab fa-github"></i></a>
                                 </div>
-                                <img class="img-fluid rounded w-75" src="assets/img/team-1.jpg" alt="">
+                                <img class="img-fluid rounded w-75" src="assets/img/team-1-1.jpg" alt="">
                             </div>
                             <div class="px-4 py-3">
                                 <h5 class="fw-bold m-0">Samuel Akinyemi</h5>
