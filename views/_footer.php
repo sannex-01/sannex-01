@@ -24,8 +24,8 @@
                 <h5 class="text-white mb-4">Popular Link</h5>
                 <a class="btn btn-link" href="#about">About Us</a>
                 <a class="btn btn-link" href="contact.php">Contact Us</a>
-                <a class="btn btn-link" href="#">Privacy Policy</a>
-                <a class="btn btn-link" href="#">Terms & Condition</a>
+                <a class="btn btn-link" href="/privacy/">Privacy Policy</a>
+                <a class="btn btn-link" href="/terms/">Terms & Condition</a>
                 <a class="btn btn-link" href="#">Career</a>
             </div>
             <div class="col-md-6 col-lg-3">
